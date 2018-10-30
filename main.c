@@ -7,6 +7,8 @@
 
 long random() {
   int a = open("/dev/random", O_RDONLY);
+  //printf("%Open: d\n", a);
+  //printf("%d\n", errno);
   int c;
   int b = read(a, &c, sizeof(c));
   close(a);
@@ -24,10 +26,14 @@ int main(){
 
   int text = open("hello.txt", O_RDWR);
   int b = write( text, array, sizeof(array) );
+  //printf("Write: %d\n", b);
+  //printf("%d\n", errno);
   printf("\nWriting numbers to file.\n\n");
 
   int array2[10];
   int d = read(text, array2, sizeof(int));
+  //printf("Read: %d\n", d);
+  //printf("%d\n", errno);
   printf("Reading numbers from file.\n\n");
 
   printf("Verication that written values are the same.\n");
